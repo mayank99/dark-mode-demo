@@ -1,0 +1,24 @@
+:root {
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+* {
+  line-height: 1.5rem;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+}

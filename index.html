@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <script>
+      const darkModeQuery = window.matchMedia("(prefers-color-scheme)");
+      const osPrefersDark = darkModeQuery.media !== "not all" && darkModeQuery.matches;
+      const theme = localStorage.getItem("theme") ?? (osPrefersDark ? "dark" : "light");
+
+      const linkTag = `<link data-id="theme-stylesheet" rel="stylesheet" href="./${theme}.css">`;
+      document.head.insertAdjacentHTML("beforeend", linkTag);
+    </script>
+
+    <noscript>
+      <link rel="stylesheet" href="./light.css" />
+    </noscript>
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <label>
+      <input type="checkbox" data-id="theme-toggle" />
+      Dark theme
+    </label>
+
+    <script>
+      const checkbox = document.querySelector('[data-id="theme-toggle"]');
+      checkbox.checked = localStorage.getItem("theme") === "dark";
+      checkbox.addEventListener("change", ({ target: { checked: isDark } }) => {
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        const linktag = document.querySelector('[data-id="theme-stylesheet"]');
+        linktag.href = `./${isDark ? "dark" : "light"}.css`;
+      });
+    </script>
+  </body>
+</html>
