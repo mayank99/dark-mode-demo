@@ -1,4 +1,10 @@
 :root {
   color-scheme: dark;
-  accent-color: rebeccapurple;
+  background-color: hsl(0deg 0% 100% / 0.05);
+}
+
+[data-icon="sun"] {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 200ms linear, transform 300ms ease-in;
 }

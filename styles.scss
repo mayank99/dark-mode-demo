@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  place-content: center;
+}
+
+.theme-button {
+  --size: 4rem;
+  height: var(--size);
+  width: var(--size);
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+
+  > svg {
+    grid-area: 1 / 1;
+    height: calc(var(--size) * 0.75);
+    width: calc(var(--size) * 0.75);
+  }
+
+  &:hover {
+    background: hsl(0deg 0% 50% / 0.3);
+  }
+}
+
+[data-icon="sun"],
+[data-icon="moon"] {
+  will-change: transform;
+  transition: opacity 150ms linear, transform 400ms ease-out;
+}
