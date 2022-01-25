@@ -5,8 +5,14 @@
     <script>
       const theme = localStorage.getItem('theme') ?? (window.matchMedia('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light');
       document.documentElement.dataset.theme = theme;
-      const linkTag = `<link data-id="theme-stylesheet" rel="stylesheet" href="./${theme}.css">`;
-      document.head.insertAdjacentHTML('beforeend', linkTag);
+      document.documentElement.style.display = 'none';
+
+      const linkTag = document.createElement('link');
+      linkTag.rel = 'stylesheet';
+      linkTag.dataset.id = 'theme-stylesheet';
+      linkTag.href = `./${theme}.css`;
+      linkTag.onload = () => document.documentElement.style.display='';
+      document.head.appendChild(linkTag);
     </script>
 
     <noscript>
