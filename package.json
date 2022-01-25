@@ -8,7 +8,16 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "sass": "^1.49.0",
+    "postcss-preset-env": "^7.2.3",
     "vite": "^2.7.2"
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-preset-env": {
+        "features": {
+          "nesting-rules": "true"
+        }
+      }
+    }
   }
 }
